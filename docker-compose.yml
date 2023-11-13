@@ -1,0 +1,16 @@
+services:
+  asir_bind9:
+    container_name: asir_bind9
+    image: ubuntu/bind9
+    platform: linux/arm64
+    ports:
+      - "54:53"
+    networks:
+      - bind9_subnet
+    volumes:
+      - ./conf:/etc/bind
+      - ./zonas:/var/lib/bind
+
+networks:
+  bind9_subnet:
+    external: true
